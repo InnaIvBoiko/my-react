@@ -1,12 +1,65 @@
-// import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function ClickCounter({value, onUpdate}) {
-//   const [clicks, setClicks] = useState(0);
+const getInitialClick = () => {
+    const savedClicks = localStorage.getItem('clickCount');
+    return savedClicks !== null ? JSON.parse(savedClicks) : 0;
+};
 
-//   const handleClick = () => {
-//     setClicks(clicks + 1);
-//   };
+export default function ClickCounter() {
+    // const [clicks, setClicks] = useState(() => {
+    //     const savedClicks = localStorage.getItem('clickCount');
+    //     // if (savedClicks !== null) {
+    //     //     return JSON.parse(savedClicks);
+    //     // }
 
-    return <button onClick={onUpdate}>Clicks: {value}</button>;
-    // return <button onClick={handleClick}>Clicks: {clicks}</button>;
+    //     // return 0;
+    //     return savedClicks !== null ? JSON.parse(savedClicks) : 0;
+    // });
+    
+    const [clicks, setClicks] = useState(getInitialClick);
+    const updateClicks = () => {
+        setClicks(clicks + 1);
+    };
+
+    const [date, setDate] = useState(Date.now());
+    const updateDate = () => {
+        setDate(Date.now());
+    };
+
+    const resetClicks = () => {
+        setClicks(0);
+    }
+
+    useEffect(() => {
+        localStorage.setItem('clickCount', clicks)
+        // localStorage.setItem('clickCount', JSON.stringify(clicks))
+    }, [clicks]);
+
+    // useEffect(() => {
+    //     console.log('Hello without second argoment');
+    // });
+
+    // useEffect(() => {
+    //     console.log('Hello with second argoment []')
+    // }, []);
+
+    //  useEffect(() => {
+    //     console.log('Hello with second argoment [clicks]')
+    //  }, [clicks]);
+    
+    // useEffect(() => {
+    //    console.log('Hello with second argoment [date]') 
+    // }, [date]);
+
+    // useEffect(() => {
+    //     console.log('hello!', clicks, date);
+    // }, [clicks, date]);
+
+    return (
+        <>
+            <button onClick={updateClicks}>Clicks: {clicks}</button>
+            <button onClick={resetClicks}>Reset</button>
+            <button onClick={updateDate}>Date: {date}</button>
+        </>
+    );
 }
