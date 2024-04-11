@@ -1,8 +1,19 @@
-# React + Vite
+# Заняття 6 - Форми з Formik
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Бібліотека [Formik](https://formik.org/)
+- Контейнер форми `Formik` та `Form`
+  - Пропс `initialValues`
+  - Пропс `onSubmit`
+- Поля форми `Field`
+  - Атрибут `name`
+  - Початкове значення елементів
+- Відправка форми
+  - Параметри `values` та `actions` у `onSubmit`
+- Стилізація компонентів Formik
+- Типи полів через пропс `as`
+- Валідація з [`Yup`](https://github.com/jquense/yup)
+  - Схема валідаціі
+  - Можливі аргументи функції-валідатора
+  - Пропс `validationSchema`
+- Компонент `ErrorMessage`
+  - Пропс `component`
