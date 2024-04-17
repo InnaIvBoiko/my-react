@@ -28,7 +28,7 @@ export default function App() {
   //   getArticles();
   // }, []);
 
-  const handleSearch = async (newQuery) => {
+  const handleSearch = (newQuery) => {
     setQuery(newQuery);
     setPage(1);
     setArticles([]);
@@ -57,6 +57,7 @@ export default function App() {
 
     async function getArticles() {
       try {
+        setError(false);
         setIsLoading(true);
         const data = await fetchArticles(query, page);
         setArticles(prevArticles => {
